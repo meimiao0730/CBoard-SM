@@ -3,7 +3,9 @@ package org.cboard.services.persist.excel;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import org.apache.poi.hssf.usermodel.HSSFClientAnchor;
-import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.ClientAnchor;
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.ss.util.CellRangeUtil;
 
@@ -61,14 +63,13 @@ public class TableXlsProcesser extends XlsProcesser {
                     Cell cell = row.createCell(j);
                     if ("header_key".equals(property) || "header_empty".equals(property)) {
                         cell.setCellStyle(context.getTableStyle());
-                    } else if ("data".equals(property)|| "column_key".equals(property)) {
+                    } else if ("data".equals(property) || "column_key".equals(property)) {
                         cell.setCellStyle(context.gettStyle());
                     }
                     if (j == colStart) {
                         if ("data".equals(property)) {
                             if (cData.getString("data") != null && cData.getString("data").contains("%")) {
-                                cell.setCellValue(cData.getDoubleValue("raw"));
-                                cell.setCellStyle(context.getPercentStyle());
+                                cell.setCellValue(cData.getString("raw"));
                             } else {
                                 cell.setCellValue(cData.getDoubleValue("raw"));
                             }

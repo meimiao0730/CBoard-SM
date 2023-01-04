@@ -17,6 +17,7 @@
         <jdk.version>1.8</jdk.version>
         <presto.version>0.161</presto.version>
         <h2.version>1.4.196</h2.version>
+        <hive.version>2.1.1</hive.version>
     </properties>
 
     <repositories>
@@ -185,11 +186,14 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.29.sec10</version>
         </dependency>
+        <!--如果使用环境中不涉及SQLServer数据库，可以选择把pom中下面依赖移除-->
+        <!--
         <dependency>
             <groupId>com.microsoft.sqlserver</groupId>
             <artifactId>sqljdbc4</artifactId>
             <version>4.0</version>
         </dependency>
+        -->
         <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
@@ -320,6 +324,14 @@
             <version>${presto.version}</version>
         </dependency>
         <!-- Presto JDBC End -->
+
+        <!-- Hive JDBC Start -->
+        <dependency>
+            <groupId>org.apache.hive</groupId>
+            <artifactId>hive-jdbc</artifactId>
+            <version>${hive.version}</version>
+        </dependency>
+        <!-- Hive JDBC End -->
 
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
